@@ -1,22 +1,18 @@
 
 public class Filtre {
-	int id;
-		
 	
-	public int getId() {
-		return id;
+	public Filtre() {
+		
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String filtreF2(boolean valeur, boolean derniereValeur) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public void filtreF1(){
-		
-	}
-	
-	public void filtreF2(){
-		
+	public String filtreF1(boolean valeur) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -7,6 +7,7 @@ public class Capteur {
 	int id;
 	int frequence;
 	String nomFichierCapteur;
+	boolean valeur;
 
 	public int getId() {
 		return id;
@@ -23,7 +24,11 @@ public class Capteur {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		try {
+			this.valeur = lecture(nomFichierCapteur);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	//Lecture de la valeur du capteur
