@@ -4,11 +4,12 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Capteur {
+
 	int id;
 	int frequence;
 	String nomFichierCapteur;
 	boolean valeur;
-
+	
 	public int getId() {
 		return id;
 	}

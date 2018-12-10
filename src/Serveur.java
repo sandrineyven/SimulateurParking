@@ -1,10 +1,10 @@
 
 public class Serveur extends Thread{
 
-	Capteur capteur;
-	Filtre filtre;
-	int numFiltre;
-	boolean derniereValeur;
+	private Capteur capteur;
+	private Filtre filtre;
+	private int numFiltre;
+	private boolean derniereValeur;
 	
 	
 	public Serveur(Capteur capteur, Filtre filtre, int numFiltre, boolean derniereValeur) {
@@ -21,7 +21,11 @@ public class Serveur extends Thread{
 		
 		if (numFiltre == 0)
 		{
-			System.out.println("Capteur "+ capteur.getId() + " : " + capteur.getValeur());
+			if (capteur.getValeur())
+			{
+				System.out.println("Capteur "+ capteur.getId() + " : 1");
+			}
+			else System.out.println("Capteur "+ capteur.getId() + " : 0");
 			
 		}
 		else {

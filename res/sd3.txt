@@ -1,3 +1,3 @@
-SID : serveur1
+SID : 3
 FRQ : 15
 LNK : ./capteur3
