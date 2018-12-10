@@ -1,0 +1,3 @@
+SID : serveur1
+FRQ : 30
+LNK : ./capteur1
