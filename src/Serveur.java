@@ -35,19 +35,29 @@ public class Serveur extends Thread{
 			
 		}
 		else {
-			if (numFiltre == 1  || numFiltre == 3)
+			if (numFiltre == 1 )
 			{
 				String placeLibre = filtre.filtreF1(capteur.getValeur());
 				System.out.println("Capteur "+ capteur.getId() + " : " + placeLibre);
 				
 			}
 			
-			if(numFiltre == 2  || numFiltre == 3)
+			if(numFiltre == 2)
 			{
 				String repeterOuNon = filtre.filtreF2(capteur.getValeur(),derniereValeur);
 				if(repeterOuNon != null)
 				{
 					System.out.println("Capteur "+ capteur.getId() + " : " + repeterOuNon);
+				}
+				derniereValeur = capteur.getValeur();
+			}
+			if(numFiltre == 3 )
+			{
+				String repeterOuNon = filtre.filtreF2(capteur.getValeur(),derniereValeur);
+				if(repeterOuNon != null)
+				{
+					String placeLibre = filtre.filtreF1(capteur.getValeur());
+					System.out.println("Capteur "+ capteur.getId() + " : " + placeLibre);
 				}
 				derniereValeur = capteur.getValeur();
 			}
