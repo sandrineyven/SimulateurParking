@@ -24,7 +24,7 @@ public class Serveur extends Thread{
 			System.out.print("L'actualisation de la donnee a echouee.");
 			e.printStackTrace();
 		}
-		
+		//Pas de filtre
 		if (numFiltre == 0)
 		{
 			if (capteur.getValeur()==1)
@@ -34,14 +34,16 @@ public class Serveur extends Thread{
 			else System.out.println("Capteur "+ capteur.getId() + " : 0");
 			
 		}
+		
 		else {
+			//Filtre 1 (renvoie D si 1 ou N si 0)
 			if (numFiltre == 1 )
 			{
 				String placeLibre = filtre.filtreF1(capteur.getValeur());
 				System.out.println("Capteur "+ capteur.getId() + " : " + placeLibre);
 				
 			}
-			
+			//Filtre 2 (réécrit seulement si la valeur a changé)
 			if(numFiltre == 2)
 			{
 				String repeterOuNon = filtre.filtreF2(capteur.getValeur(),derniereValeur);
@@ -51,6 +53,7 @@ public class Serveur extends Thread{
 				}
 				derniereValeur = capteur.getValeur();
 			}
+			//Filtre 1+2 (réécrit seulement si la valeur a changé en D ou N)
 			if(numFiltre == 3 )
 			{
 				String repeterOuNon = filtre.filtreF2(capteur.getValeur(),derniereValeur);

@@ -36,7 +36,7 @@ public class Capteur {
 			System.out.println("Erreur d'ouverture");
 		}
 		while ((ligne = lecteurAvecBuffer.readLine()) != null) {
-
+			//Si la valeur lue n'est pas 0 ou 1 on arrete le thread avec l'assert et une erreur est levee
 			assert ligne.charAt(ligne.length() - 1)=='0' || ligne.charAt(ligne.length() - 1)=='1': "La valeur du capteur n'est pas valide";
 			if (ligne.charAt(ligne.length() - 1) == '1') {
 				this.valeur = 1;

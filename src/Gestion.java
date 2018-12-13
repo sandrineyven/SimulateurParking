@@ -7,6 +7,7 @@ public class Gestion{
 
 	public static void main(String args[]) throws IOException {
 		
+		//Initialisation du filtre, lecture des SD et initialisation des capteurs en fonction des SD
 		Filtre filtre = new Filtre();
 		String[] lecture0 = recupParam("res/sd0.txt");
 		String[] lecture1 = recupParam("res/sd1.txt");
@@ -18,6 +19,8 @@ public class Gestion{
 		Capteur capteur3 = new Capteur(Integer.parseInt(lecture3[0]),Integer.parseInt(lecture3[1]), lecture3[2]);
 
 		
+		//Lancement des différents services
+		//Chaque service contrôle un capteur
 		Serveur service0 = new Serveur(capteur0, filtre, 0, capteur0.getValeur());
 		Serveur service1 = new Serveur(capteur1, filtre, 1, capteur1.getValeur());
 		Serveur service2 = new Serveur(capteur2, filtre, 2, capteur2.getValeur());
@@ -30,7 +33,7 @@ public class Gestion{
 	
 	}
 	
-	//Recuperation de la frequence a laquelle on va lire les valeurs du capteur
+	//Recuperation des parametres du fichier SD passe en parametre
 		public static String[] recupParam(String nomFichier) throws IOException {
 			String[] lecture= new String[3];
 			BufferedReader lecteurAvecBuffer = null;
