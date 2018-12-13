@@ -26,14 +26,14 @@ public class Capteur {
 			e.printStackTrace();
 		}
 		try {
-			this.valeur = lecture(nomFichierCapteur);
+			this.valeur = actualiser();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	//Lecture de la valeur du capteur
-	public boolean lecture(String nomFichierCapteur) throws IOException {
+	public boolean actualiser() throws IOException {
 		BufferedReader lecteurAvecBuffer = null;
 		String ligne;
 
@@ -56,29 +56,28 @@ public class Capteur {
 		this.nomFichierCapteur = null;
 		String nomFichierParam = null;
 		switch (id) {
+		case 0:
+			nomFichierParam = "res/sd0.txt";
+			break;
 		case 1:
-			this.nomFichierCapteur = "res/capteur1.txt";
 			nomFichierParam = "res/sd1.txt";
 			break;
 		case 2:
-			this.nomFichierCapteur = "res/capteur2.txt";
 			nomFichierParam = "res/sd2.txt";
 			break;
 		case 3:
-			this.nomFichierCapteur = "res/capteur3.txt";
 			nomFichierParam = "res/sd3.txt";
 			break;
 		}
 		if (nomFichierParam != null) {
-			recupFrequence(nomFichierParam);
+			recupParam(nomFichierParam);
 		} else {
-
 			System.out.println("Fichier introuvable");
 		}
 	}
 
 	//Recuperation de la frequence a laquelle on va lire les valeurs du capteur
-	public void recupFrequence(String nomFichier) throws IOException {
+	public void recupParam(String nomFichier) throws IOException {
 		BufferedReader lecteurAvecBuffer = null;
 		String ligne;
 		int nbLigne = 0;
@@ -91,9 +90,41 @@ public class Capteur {
 			nbLigne++;
 			if (nbLigne == 2) {
 				this.frequence = Integer.parseInt(ligne.substring(6, ligne.length()));
+			}else if(nbLigne == 3) {
+				this.nomFichierCapteur = "res" + ligne.substring(7, ligne.length()) +".txt";
 			}
 		}
 		lecteurAvecBuffer.close();
 	}
+	
+	//Getteurs et setteurs
+
+	public int getFrequence() {
+		return frequence;
+	}
+
+	public void setFrequence(int frequence) {
+		this.frequence = frequence;
+	}
+
+	public String getNomFichierCapteur() {
+		return nomFichierCapteur;
+	}
+
+	public void setNomFichierCapteur(String nomFichierCapteur) {
+		this.nomFichierCapteur = nomFichierCapteur;
+	}
+
+	public boolean getValeur() {
+		return valeur;
+	}
+
+	public void setValeur(boolean valeur) {
+		this.valeur = valeur;
+	}
+	
+	 
+	
+	
 
 }

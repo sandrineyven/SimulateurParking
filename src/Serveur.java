@@ -1,3 +1,4 @@
+import java.io.IOException;
 
 public class Serveur extends Thread{
 
@@ -17,7 +18,12 @@ public class Serveur extends Thread{
 
 
 	public void sortie() {
-		capteur.actualiser();
+		try {
+			capteur.actualiser();
+		} catch (IOException e) {
+			System.out.print("L'actualisation de la donnee a echouee.");
+			e.printStackTrace();
+		}
 		
 		if (numFiltre == 0)
 		{
