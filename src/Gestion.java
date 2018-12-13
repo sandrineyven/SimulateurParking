@@ -18,10 +18,10 @@ public class Gestion{
 		Capteur capteur3 = new Capteur(Integer.parseInt(lecture3[0]),Integer.parseInt(lecture3[1]), lecture3[2]);
 
 		
-		Serveur service0 = new Serveur(capteur0, filtre, 0, false);
-		Serveur service1 = new Serveur(capteur1, filtre, 1, false);
-		Serveur service2 = new Serveur(capteur2, filtre, 2, false);
-		Serveur service3 = new Serveur(capteur3, filtre, 3, false);
+		Serveur service0 = new Serveur(capteur0, filtre, 0, capteur0.getValeur());
+		Serveur service1 = new Serveur(capteur1, filtre, 1, capteur1.getValeur());
+		Serveur service2 = new Serveur(capteur2, filtre, 2, capteur2.getValeur());
+		Serveur service3 = new Serveur(capteur3, filtre, 3, capteur3.getValeur());
 		
 		service0.start();
 		service1.start();

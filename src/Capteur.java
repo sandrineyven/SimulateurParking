@@ -5,10 +5,10 @@ import java.io.IOException;
 
 public class Capteur {
 
-	int id;
-	int frequence;
-	String nomFichierCapteur;
-	boolean valeur;
+	private int id;
+	private int frequence;
+	private String nomFichierCapteur;
+	private int valeur;
 	
 	public int getId() {
 		return id;
@@ -18,11 +18,11 @@ public class Capteur {
 		this.id = id;
 	}
 
-	@SuppressWarnings("null")
 	public Capteur(int id, int frequence, String nomFichierCapteur) {
 		this.id = id;
 		this.frequence = frequence;
 		this.nomFichierCapteur = nomFichierCapteur;
+		this.valeur=2;
 	}
 
 	//Lecture de la valeur du capteur
@@ -36,10 +36,12 @@ public class Capteur {
 			System.out.println("Erreur d'ouverture");
 		}
 		while ((ligne = lecteurAvecBuffer.readLine()) != null) {
+
+			assert ligne.charAt(ligne.length() - 1)=='0' || ligne.charAt(ligne.length() - 1)=='1': "La valeur du capteur n'est pas valide";
 			if (ligne.charAt(ligne.length() - 1) == '1') {
-				this.valeur = true;
-			}else {
-				this.valeur = false;
+				this.valeur = 1;
+			}else if(ligne.charAt(ligne.length() - 1) == '0'){
+				this.valeur = 0;
 			}
 		}
 		lecteurAvecBuffer.close();
@@ -66,12 +68,8 @@ public class Capteur {
 		this.nomFichierCapteur = nomFichierCapteur;
 	}
 
-	public boolean getValeur() {
+	public int getValeur() {
 		return valeur;
-	}
-
-	public void setValeur(boolean valeur) {
-		this.valeur = valeur;
 	}
 	
 	 
